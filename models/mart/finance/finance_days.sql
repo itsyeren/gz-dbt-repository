@@ -1,5 +1,3 @@
- {{ config(materialized='table') }}
-
 WITH finance AS (
   SELECT 
     EXTRACT(DAY FROM date) AS date_day,
