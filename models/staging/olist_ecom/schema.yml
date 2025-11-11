@@ -1,0 +1,144 @@
+version: 2
+
+sources:
+  - name: olist_ecom
+    database: olist-ecommerce-477211
+    schema: olist_data
+    tables:
+
+      - name: customers
+        identifier: customers
+        description: customers info
+        columns:
+          - name: customer_id
+            description: customer identification
+            tests:
+              - unique
+              - not_null
+          - name: customer_unique_id
+            description: customer id by one
+          - name: customer_zip_code_prefix
+            description: customer city zip code
+          - name: customer_city
+            description: customers location city
+          - name: customer_state
+            description: customer state address
+
+      - name: products
+        identifier: products
+        description: products details
+        columns:
+          - name: product_id
+            description: product ids
+            tests:
+              - unique
+              - not_null
+          - name: product_category_name
+            description: category divisions
+          - name: product_name_length
+          - name: product_description_lenght
+          - name: product_photos_qty
+          - name: product_weight_g
+          - name: product_lenght_cm
+          - name: product_height_cm
+          - name: product_width_cm
+
+      - name: sellers
+        identifier: sellers
+        description: seller info
+        columns:
+          - name: seller_id
+            description: seller ids
+            tests:
+              - unique
+              - not_null
+          - name: seller_zip_code_prefix
+          - name: seller_city
+          - name: seller_state
+
+      - name: orders
+        identifier: updated_orders
+        description: order info and detail
+        columns:
+          - name: order_id
+            description: order ids
+            tests:
+              - unique
+              - not_null
+          - name: customer_id 
+            description: matched customer ids
+          - name: order_status
+            description: order situation
+          - name: order_purchase_date
+            description: purchase date by customer
+          - name: order_approved_date
+            description: approved date by seller
+          - name: order_delivered_carrier_date
+            description: delivery date to carrier
+          - name: order_delivered_customer_date
+            description: delivery date to customer by carrier
+          - name: order_estimated_delivery_date
+            description: estimated delivery date
+
+      - name: order_reviews
+        identifier: updated_order_reviews
+        description: reviews by customers to products and services
+        columns:
+          - name: review_id
+            description: reviews by key
+          - name: order_id
+          - name: review_score
+            description: scores by review
+          - name: review_creation_date
+            description: review dates created by customers
+          - name: review_answer_date
+            description: answer dates to reviews by sellers
+
+      - name: order_items
+        identifier: updated_order_items2
+        description: product from seller to order
+        columns:
+          - name: order_id
+          - name: order_item_id
+            description: number of orders by order_id
+          - name: product_id
+          - name: seller_id
+            description: seller by key
+          - name: shipping_date
+            description: shipping date
+          - name: price
+          - name: freigth_value
+            description: number of items shipped by order id
+      
+      - name: order_KPIs
+        identifier: updated_order_items_KPIs
+        description: order calculations
+        columns:
+          - name: order_id
+          - name: distinct_products
+          - name: order_subtotal
+          - name: order_freight
+          - name: order_total
+          - name: avg_item_price
+
+      - name: order_payment_info
+        identifier: updated_order_payments
+        description: order payment details  
+        columns:
+          - name: order_id
+          - name: payment_type
+          - name: payment_installments
+          - name: payment_value
+
+      - name: order_KPIs_by_type
+        identifier: updated_order_payments_KPIs_by_type
+        description: payment types and values
+        columns:
+          - name: payment_type
+          - name: number_of_payments
+          - name: revenue
+          - name: avg_payment_value
+          - name: max_payment_sequential
+          - name: max_installments
+          - name: revenue_share_pct
+            description: revenue by product

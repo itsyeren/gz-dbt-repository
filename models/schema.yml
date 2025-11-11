@@ -48,3 +48,104 @@ sources:
            description: the cost of preparing the parcel in the distribution centre/warehouse
          - name: ship_cost
            description: shipping cost paid by Greenweez to the carrier/logistics provider
+  
+      - name: google
+        identifier: raw_gz_adwords
+        description: google ads data
+        columns:
+          - name: date_date
+            description: date
+          - name: paid_source
+            description: the price for the source
+          - name: campaign_key
+            description: primary campaign key
+            tests:
+              - unique
+              - not_null
+          - name: camPGN_name
+            description: the campaign name
+          - name: ads_cost
+            description: total cost of ads
+          - name: impression
+            description: number of impressions
+          - name: click
+            description: number of clicks
+
+      - name: bing
+        identifier: raw_gz_bing
+        description: bing data
+        columns:
+          - name: date_date
+            description: date
+          - name: paid_source
+            description: the price for the source
+          - name: campaign_key
+            description: primary campaign key
+            tests:
+              - unique
+              - not_null
+          - name: camPGN_name
+            description: the campaign name
+          - name: ads_cost
+            description: total cost of ads
+          - name: impression
+            description: number of impressions
+          - name: click
+            description: number of clicks
+
+      - name: criteo
+        identifier: raw_gz_criteo
+        description: criteo data
+        columns:
+          - name: date_date
+            description: date
+          - name: paid_source
+            description: the price for the source
+          - name: campaign_key
+            description: primary campaign key
+            tests:
+              - unique
+              - not_null
+          - name: camPGN_name
+            description: the campaign name
+          - name: ads_cost
+            description: total cost of ads
+          - name: impression
+            description: number of impressions
+          - name: click
+            description: number of clicks
+          
+      - name: facebook
+        identifier: raw_gz_facebook
+        description: facebook data
+        columns:
+          - name: date_date
+            description: date
+          - name: paid_source
+            description: the price for the source
+          - name: campaign_key
+            description: primary campaign key
+            tests:
+              - unique
+              - not_null
+          - name: camPGN_name
+            description: the campaign name
+          - name: ads_cost
+            description: total cost of ads
+          - name: impression
+            description: number of impressions
+          - name: click
+            description: number of clicks
+
+models:
+  - name: finance_campaigns_day
+    description: global kpi 
+    columns:
+    - name: ads_margin
+      description: operational_margin - ads_cost
+      tests:
+       - not_null
+    - name: average_basket
+      description: avg basket for every day purchase
+      tests:
+        - not_null
